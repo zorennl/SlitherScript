@@ -43,6 +43,10 @@ def death():
 
 
 init_window(500, 500, "snake")
+init_audio_device()
+
+eat_apple_sound = load_sound("assets/nom-nom-nom_gPJiWn4.mp3")
+
 set_target_fps(10)
 
 while not window_should_close():
@@ -86,6 +90,7 @@ while not window_should_close():
         if check_collision_recs(i, snake_head):
             snake_parts.append(Snake_part(Rectangle(-10, -10, 10, 10), Vector2(0, 0)))
             apples.pop(apples.index(i))
+            play_sound(eat_apple_sound)
     if is_key_down(KEY_R):
         snake_parts.append(Snake_part(Rectangle(-10, -10, 10, 10), Vector2(0, 0)))
 
